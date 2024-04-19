@@ -1,0 +1,20 @@
+{
+  "name": "js_api_playwright_tests",
+  "version": "1.0.0",
+  "description": "Automated software testing with Playwright & JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+
+    "test:api": "npm run test api"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.42.1",
+    "@types/node": "^20.11.5",
+    "jest": "^29.7.0",
+    "prettier": "3.2.5"
+  }
+}
