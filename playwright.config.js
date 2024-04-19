@@ -1,5 +1,5 @@
 // @ts-check
-const { defineConfig, devices } = require('@playwright/test')
+const { defineConfig, devices } = require("@playwright/test");
 
 /**
  * Read environment variables from file.
@@ -13,19 +13,19 @@ const { defineConfig, devices } = require('@playwright/test')
 module.exports = defineConfig({
   projects: [
     {
-      name: 'api',
-      // testMatch: ['<rootDir>/tests/functional/*.spec.js']
+      name: "api",
+      // testMatch: ['<rootDir>/tests/api/*.spec.js']
       // inne opcje konfiguracji dla testów funkcjonalnych
     },
     /* Configure projects for major browsers */
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
       // @ts-ignore
       contextOptions: {
-        timeout: 300000 //  miliseconds
-      }
-    }
+        timeout: 300000, //  miliseconds
+      },
+    },
     // {
     //   name: 'firefox',
     //   use: { ...devices['Desktop Firefox'] },
@@ -62,18 +62,18 @@ module.exports = defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: "html",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: `https://reqres.in/`,
+    // baseURL: `https://reqres.in/`,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry'
-  }
+    trace: "on-first-retry",
+  },
   /* Run your local dev server before starting the tests */
   // webServer: {
   //   command: 'npm run start',
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-})
+});
