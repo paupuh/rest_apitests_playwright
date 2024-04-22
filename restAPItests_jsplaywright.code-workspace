@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../js_playwright_tests/.github"
+		}
+	],
+	"settings": {}
+}

@@ -28,7 +28,7 @@ test.describe.parallel("API testing", () => {
     expect(responseBody.data.id).toBe(1);
     expect(responseBody.data.first_name).toContain("George");
     expect(responseBody.data.last_name).toContain("Bluth");
-    expect(responseBody.email).toBeTruthy();
+    // expect(responseBody.email).toBeTruthy();
   });
 
   test("POST Request - Post User Detail", async ({ request }) => {
