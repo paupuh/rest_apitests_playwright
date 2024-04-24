@@ -23,5 +23,5 @@ jobs:
         if: always()
         with:
           name: API-playwright-report
-          path: playwright-report//Users/paulinapuhlmann/Documents/GitHub/restAPItests_jsplaywright
+          path: playwright-report/Users/paulinapuhlmann/Documents/GitHub/restAPItests_jsplaywright
           retention-days: 30
