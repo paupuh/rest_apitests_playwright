@@ -12,11 +12,6 @@ const { defineConfig, devices } = require("@playwright/test");
  */
 module.exports = defineConfig({
   projects: [
-    {
-      name: "api",
-      // testMatch: ['<rootDir>/tests/api/*.spec.js']
-      // inne opcje konfiguracji dla testów funkcjonalnych
-    },
     /* Configure projects for major browsers */
     {
       name: "chromium",
@@ -26,10 +21,10 @@ module.exports = defineConfig({
         timeout: 300000, //  miliseconds
       },
     },
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
     // {
     //   name: 'webkit',
     //   use: { ...devices['Desktop Safari'] },
