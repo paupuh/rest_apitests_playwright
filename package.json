@@ -4,6 +4,7 @@
   "description": "Automated software testing with Playwright & JavaScript",
   "main": "index.js",
   "scripts": {
+    "test": "playwright test",
     "test:api": "npm run test api"
   },
   "keywords": [],
