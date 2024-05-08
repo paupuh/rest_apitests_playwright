@@ -17,9 +17,6 @@ module.exports = defineConfig({
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
       // @ts-ignore
-      contextOptions: {
-        timeout: 300000, //  miliseconds
-      },
     },
     {
       name: 'firefox',
@@ -47,6 +44,7 @@ module.exports = defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
+
   ],
   /* Run tests in files in parallel */
   fullyParallel: true,
