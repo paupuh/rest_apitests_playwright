@@ -1,6 +1,10 @@
 // @ts-check
 const { defineConfig, devices } = require("@playwright/test");
 
+module.exports = defineConfig({
+  reporter: [["html", { open: "on-failure" }]],
+});
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -19,8 +23,8 @@ module.exports = defineConfig({
       // @ts-ignore
     },
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] },
     },
     // {
     //   name: 'webkit',
@@ -44,7 +48,6 @@ module.exports = defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
-
   ],
   /* Run tests in files in parallel */
   fullyParallel: true,

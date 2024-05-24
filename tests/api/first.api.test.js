@@ -3,7 +3,9 @@ import { test, expect } from "@playwright/test";
 test.describe.parallel("API testing", () => {
   const baseURL = "https://reqres.in/api";
 
-  test("GET / Return List Of All Users / Assert Status is 200", async  ({ request}) => {
+  test("GET / Return List Of All Users / Assert Status is 200", async ({
+    request,
+  }) => {
     const response = await request.get(`${baseURL}/users`);
     expect(response.status()).toBe(200);
 
@@ -14,7 +16,9 @@ test.describe.parallel("API testing", () => {
     expect(responseBody.total_pages).toBe(2);
   });
 
-  test("GET / Return First User Details / Server Status Is 200", async ({ request }) => {
+  test("GET / Return First User Details / Server Status Is 200", async ({
+    request,
+  }) => {
     const response = await request.get(`${baseURL}/users/1`);
     const responseBody = await response.json();
     expect(response.status()).toBe(200);
@@ -25,7 +29,9 @@ test.describe.parallel("API testing", () => {
     console.log(responseBody);
   });
 
-  test("GET / Not Existing Endpoint / Server Status Is 404", async ({ request }) => {
+  test("GET / Not Existing Endpoint / Server Status Is 404", async ({
+    request,
+  }) => {
     const response = await request.get(
       `${baseURL}/users/non-existing-endpoint`,
     );
@@ -33,7 +39,7 @@ test.describe.parallel("API testing", () => {
   });
 
   test("POST Request - Post User Detail Status Is 201", async ({ request }) => {
-    const response = await request.post(`${baseURL}/users`, {
+    const response = await request.post(`${baseURL}/users`, { // reponse variable is the response from the server
       data: {
         id: 1000,
       },
@@ -46,7 +52,7 @@ test.describe.parallel("API testing", () => {
   });
 
   test("POST Request - Login Status Is 200", async ({ request }) => {
-    const response = await request.post(`${baseURL}/login`, {
+    const response = await request.post(`${baseURL}/login`, { 
       data: {
         email: "eve.holt@reqres.in",
         password: "cityslicka",
@@ -58,12 +64,14 @@ test.describe.parallel("API testing", () => {
     console.log(responseBody);
   });
 
-  test("POST Request - Login With Missing Password Unsuccessfull Status Is 400", async ({ request }) => {
+  test("POST Request - Login With Missing Password Unsuccessfull Status Is 400", async ({
+    request,
+  }) => {
     const response = await request.post(`${baseURL}/login`, {
       data: {
         email: "eve.holt@reqres.in",
         error: "Missing password",
-    }
+      },
     });
     const responseBody = JSON.parse(await response.text());
     expect(response.status()).toBe(400);
@@ -71,7 +79,9 @@ test.describe.parallel("API testing", () => {
     console.log(responseBody);
   });
 
-  test("POST REQUEST - Logitn With Missing Email Unsuccessfull Status Is 400", async ({ request }) => {
+  test("POST REQUEST - Logitn With Missing Email Unsuccessfull Status Is 400", async ({
+    request,
+  }) => {
     const response = await request.post(`${baseURL}/login`, {
       data: {
         password: "cityslicka",
@@ -85,11 +95,13 @@ test.describe.parallel("API testing", () => {
     console.log(responseBody);
   });
 
-  test("PUT - Update Existing's User Name And Job Status Is 200", async ({ request }) => {
+  test("PUT - Update Existing's User Name And Job Status Is 200", async ({
+    request,
+  }) => {
     const response = await request.put(`${baseURL}/users/2`, {
       data: {
-        "name": "paulina",
-        "job": "test automation",
+        name: "paulina",
+        job: "test automation",
       },
     });
     const responseBody = JSON.parse(await response.text());
@@ -100,17 +112,24 @@ test.describe.parallel("API testing", () => {
     console.log(responseBody);
   });
 
-  test("PATCH - Partially Updated Existing User's Name Status Is 200", async ({ request }) => {     
-    const patch = await request.patch(`${baseURL}/users/2`,{ 
-    data: {
-        "first_name": "paulina",
-      }
+  test("PATCH - Partially Updated Existing User's Name Status Is 200", async ({
+    request,
+  }) => {
+    const patch = await request.patch(`${baseURL}/users/2`, {
+      data: {
+        first_name: "paulina",
+      },
     });
     const responseBody = JSON.parse(await patch.text());
     expect(patch.status()).toBe(200);
     console.log(responseBody);
     expect(responseBody.updatedAt).toBeTruthy;
-
   });
 
+
+test("DELETE - Delete Existing User Status Is 204", async ({ request }) => {
+  const response = await request.delete(`${baseURL}/users/2`);
+  expect(response.status()).toBe(204);
+  console.log(response.status());
   });
+});
